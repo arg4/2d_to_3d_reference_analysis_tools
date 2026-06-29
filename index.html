@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Prisms - Drawing Tools</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="canvas-wrap">
+      <canvas id="protractorCanvas" width="1200" height="720" aria-label="Drawing canvas"></canvas>
+    </section>
+
+    <main class="app">
+      <header class="topbar">
+        <h1>Reference Drawing Tools</h1>
+        <p>Switch tools, draw 2 lines, measure angles and lengths.</p>
+      </header>
+
+      <section class="palette" aria-label="Tool palette">
+        <p class="palette-label">Command Palette</p>
+        <div class="palette-buttons">
+          <button id="toolProtractorBtn" type="button" class="tool-btn active">Protractor</button>
+          <button id="toolRatioBtn" type="button" class="tool-btn">Line Ratio</button>
+          <button id="toolWarpBtn" type="button" class="tool-btn">Image Warp</button>
+          <button id="setScaleModeBtn" type="button" class="tool-btn">Set Scale</button>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Tool controls">
+        <button id="clearLinesBtn" type="button">Clear Lines</button>
+        <button id="clearImageBtn" type="button">Clear Image</button>
+        <button id="clearScaleBtn" type="button">Clear Scale</button>
+        <label class="upload-wrap" for="imageInput">Load Image</label>
+        <input id="imageInput" type="file" accept="image/*" />
+        <div class="scale-inputs">
+          <label for="scaleLengthInput">Scale Length</label>
+          <input id="scaleLengthInput" type="number" min="0" step="any" placeholder="e.g. 100" />
+          <label for="scaleUnitInput">Unit</label>
+          <input id="scaleUnitInput" type="text" value="units" />
+          <button id="applyScaleBtn" type="button">Apply Scale</button>
+        </div>
+      </section>
+
+      <section class="status" aria-live="polite">
+        <p id="stepText">Click two points for line 1.</p>
+        <p id="angleText">Angle: -</p>
+        <p id="lengthText">Lengths: -</p>
+        <p id="scaleText">Scale: none (optional)</p>
+        <p id="hintText">Tip: Press Ctrl+V or drag an image onto the canvas. Drag points and image handles to refine.</p>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

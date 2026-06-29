@@ -1,0 +1,228 @@
+:root {
+  --bg: #f4f0e8;
+  --panel: #fffaf1;
+  --text: #2a2520;
+  --accent: #0f6d6a;
+  --accent-2: #db5f2f;
+  --line-1: #0077c8;
+  --line-2: #e2482f;
+  --muted: #6b6256;
+  --border: #d8ccbb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 10%, #fff8ea 0%, rgba(255, 248, 234, 0) 35%),
+    radial-gradient(circle at 90% 80%, #efe4d4 0%, rgba(239, 228, 212, 0) 30%),
+    var(--bg);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app {
+  position: fixed;
+  z-index: 10;
+  top: 1rem;
+  left: 1rem;
+  width: min(560px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding: 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: rgba(255, 250, 241, 0.86);
+  backdrop-filter: blur(6px);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+  letter-spacing: 0.03em;
+}
+
+.topbar,
+.palette,
+.controls,
+.status {
+  position: relative;
+  z-index: 2;
+}
+
+.topbar p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.palette {
+  margin-top: 1rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--panel);
+}
+
+.palette-label {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.palette-buttons {
+  margin-top: 0.55rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tool-btn.active {
+  border-color: var(--accent);
+  background: #e6f4f3;
+  color: #124341;
+  font-weight: 700;
+}
+
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+button,
+.upload-wrap {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:hover,
+.upload-wrap:hover {
+  border-color: var(--accent);
+}
+
+.upload-wrap {
+  background: #fff;
+}
+
+#imageInput {
+  display: none;
+}
+
+.scale-inputs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.scale-inputs label {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.scale-inputs input {
+  width: 6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.86rem;
+  color: var(--text);
+}
+
+#scaleUnitInput {
+  width: 5.5rem;
+}
+
+.status {
+  margin-top: 0.9rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.8rem 0.9rem;
+}
+
+.status p {
+  margin: 0.25rem 0;
+}
+
+#angleText {
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+#hintText {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+#lengthText {
+  font-weight: 600;
+}
+
+#scaleText {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.canvas-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  margin-top: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+
+.canvas-wrap.drag-over {
+  box-shadow: inset 0 0 0 4px rgba(15, 109, 106, 0.35);
+}
+
+#protractorCanvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background:
+    linear-gradient(45deg, #ebebeb 25%, transparent 25%),
+    linear-gradient(-45deg, #ebebeb 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ebebeb 75%),
+    linear-gradient(-45deg, transparent 75%, #ebebeb 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+}
+
+@media (max-width: 768px) {
+  .app {
+    top: 0.5rem;
+    left: 0.5rem;
+    width: calc(100vw - 1rem);
+    max-height: 55vh;
+  }
+
+  .status {
+    font-size: 0.95rem;
+  }
+
+  .scale-inputs {
+    width: 100%;
+    border-radius: 0.75rem;
+    flex-wrap: wrap;
+  }
+}
